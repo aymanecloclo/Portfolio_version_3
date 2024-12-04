@@ -9,6 +9,16 @@ html {
 }
 
 /* Ajout des classes Tailwind pour le mode clair et sombre */
+
+/* Par défaut, les éléments auront le mode clair */
 body {
-  @apply bg-white text-gray-900 dark:bg-gray-900 dark:text-white;
-}
+    background-color: white;
+    color: black;
+  }
+  
+  /* Lorsque le mode sombre est activé */
+  .dark body {
+    background-color: #181818;
+    color: white;
+  }
+  

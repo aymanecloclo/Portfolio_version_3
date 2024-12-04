@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react';
-import Header from './components/Header'; // ton composant de header
+import Header from './components/Header';
 
 export default function App() {
   const [theme, setTheme] = useState('');
 
-  // Effet pour vérifier la préférence de l'utilisateur au démarrage
+  // Vérification et application du thème au démarrage
   useEffect(() => {
-    // Vérifier la préférence du mode sombre du système
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
       setTheme(savedTheme);
@@ -29,8 +28,8 @@ export default function App() {
   };
 
   return (
-    <div>
-      <Header />
+    <div className='h-screen'>
+      <Header toggleTheme={toggleTheme} />
       <button onClick={toggleTheme} className="p-2 m-4 bg-blue-500 text-white rounded">
         Toggle Dark Mode
       </button>
