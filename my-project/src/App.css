@@ -6,3 +6,8 @@ body ,html{
     color: #113264;
     font-family: 'Inter', sans-serif;
   }
+  /* Classes Tailwind pour le fond clair et sombre */
+body {
+  @apply bg-white text-gray-900 dark:bg-[#113264] dark:text-white;
+}
+
