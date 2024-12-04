@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  darkMode: ['media', 'class'], // Utilisation de 'media' et 'class' pour gérer le mode sombre
+  darkMode: 'class', // Active le mode sombre via une classe 'dark'
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",

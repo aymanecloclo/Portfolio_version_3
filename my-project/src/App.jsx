@@ -1,47 +1,40 @@
 import { useState, useEffect } from 'react';
-import Header from './components/Header';
-import './App.css';
+import Header from './components/Header'; // ton composant de header
 
 export default function App() {
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState('');
 
-  // Gestion du thème au chargement de la page
+  // Effet pour vérifier la préférence de l'utilisateur au démarrage
   useEffect(() => {
-    // Vérifier la préférence de thème du système (dark ou light)
-    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-
-    // Vérifier si un thème est sauvegardé dans localStorage
+    // Vérifier la préférence du mode sombre du système
     const savedTheme = localStorage.getItem('theme');
-
-    // Utiliser le thème sauvegardé ou le thème système par défaut
     if (savedTheme) {
       setTheme(savedTheme);
+      document.documentElement.classList.add(savedTheme); // Ajoute la classe 'dark' ou 'light'
     } else {
-      setTheme(systemTheme); // Si aucun thème n'est sauvegardé, utiliser celui du système
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const defaultTheme = prefersDark ? 'dark' : 'light';
+      setTheme(defaultTheme);
+      document.documentElement.classList.add(defaultTheme); // Ajoute la classe en fonction de la préférence système
     }
+  }, []);
 
-    // Appliquer la classe du thème au document HTML
-    document.documentElement.classList.add(theme);
-  }, [theme]);
-
-  // Fonction pour changer de thème
+  // Fonction pour basculer entre les modes sombre et clair
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
-    document.documentElement.classList.remove(theme);
-    document.documentElement.classList.add(newTheme);
-    localStorage.setItem('theme', newTheme); // Sauvegarder le thème dans localStorage
+    document.documentElement.classList.remove(theme); // Retirer l'ancienne classe
+    document.documentElement.classList.add(newTheme); // Ajouter la nouvelle classe
+    localStorage.setItem('theme', newTheme); // Enregistrer le thème dans le localStorage
   };
 
   return (
-    <>
-      <Header toggleTheme={toggleTheme} />
-      <button
-        onClick={toggleTheme}
-        className="fixed top-4 right-4 p-2 bg-gray-800 text-white rounded"
-      >
-        {theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+    <div>
+      <Header />
+      <button onClick={toggleTheme} className="p-2 m-4 bg-blue-500 text-white rounded">
+        Toggle Dark Mode
       </button>
-    </>
+      {/* Le reste de ton contenu */}
+    </div>
   );
 }
