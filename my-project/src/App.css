@@ -1,13 +1,14 @@
+/* Styles de base */
+body,
+html {
+  width: 100%;
+  height: 100vh;
+  background-color: #F4FAFF;
+  color: #113264;
+  font-family: 'Inter', sans-serif;
+}
 
-body ,html{
-    width: 100%;
-    height: 100vh;
-    background-color: #F4FAFF ;
-    color: #113264;
-    font-family: 'Inter', sans-serif;
-  }
-  /* Classes Tailwind pour le fond clair et sombre */
+/* Ajout des classes Tailwind pour le mode clair et sombre */
 body {
   @apply bg-white text-gray-900 dark:bg-gray-900 dark:text-white;
 }
-
