@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { useTheme } from "../components/theme-provider"
 const Header = () => {
-  const [showMenu, setShowMenu] = useState(false);
+  const [showMenu, setShowMenu] = useState(true);
   const { setTheme } = useTheme();
 
   const menuItems = [
@@ -69,15 +69,16 @@ const Header = () => {
       </DropdownMenu>
          </div>
        
-        <div className={`${showMenu ? '' : 'hidden'} w-full md:flex items-center md:w-auto md:gap-5`}>
+         <div className="w-full md:flex items-center md:w-auto md:gap-5">
         <AnimatePresence>
-  {showMenu && ( // `show` contrôle si le menu est visible
+  {showMenu && (
     <motion.ul
       className="text-center font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 dark:border-gray-700"
-      initial={{ opacity: 0, y: -10 }} // Point de départ
-      animate={{ opacity: 1, y: 0 }}   // Animation d'entrée
-      exit={{ opacity: 0, y: -10 }}    // Animation de sortie
-      transition={{ duration: 0.3 }}   // Durée
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -10 }} // Gardez la même animation partout
+
+      transition={{ duration: 0.3 }}
     >
       {menuItems.map((item, index) => (
         <motion.li
@@ -100,27 +101,10 @@ const Header = () => {
           </a>
         </motion.li>
       ))}
-      <motion.li
-        className="text-gray-900 md:hover:dark:text-[#D5EFFF] dark:text-[#FBFDFF]"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ delay: menuItems.length * 0.1, duration: 0.2 }}
-      >
-        <button
-          className="mx-auto my-2 flex overflow-hidden items-center text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-[#0D74CE] text-[#FBFDFF] shadow hover:bg-[#0D74CE]/90 h-9 px-1 py-2 whitespace-pre md:flex group relative w-5/12 justify-center gap-2 rounded-md transition-all duration-300 ease-out hover:ring-2 hover:ring-black hover:ring-offset-2"
-        >
-          <span
-            className="absolute right-0 -mt-12 h-32 w-8 translate-x-12 rotate-12 bg-[#F4FAFF] opacity-10 transition-all duration-1000 ease-out group-hover:-translate-x-40"
-          ></span>
-          <div className="flex items-center">
-            <span className="ml-1 text-[#FBFDFF]">Hire me</span>
-          </div>
-        </button>
-      </motion.li>
     </motion.ul>
   )}
 </AnimatePresence>
+
 
         </div>
    
