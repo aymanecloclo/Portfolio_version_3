@@ -5,6 +5,7 @@ import { LuPanelTopClose } from "react-icons/lu";
 import logo_light from '../assets/images/logo-light.png'
 import logo_dark from '../assets/images/logo-dark.png'
 import { Button } from "@/components/ui/button"
+import { Link } from 'react-router-dom';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,11 +18,11 @@ const Header = () => {
   const { setTheme ,theme} = useTheme();
    console.log(theme);
   const menuItems = [
-    { label: "Home", href: "#", },
-    { label: "About", href: "#" },
-    { label: "Services", href: "#" },
-    { label: "Pricing", href: "#" },
-    { label: "Contact", href: "#" },
+    { label: "Home", href: "/", },
+    { label: "About", href: "about" },
+    { label: "Services", href: "" },
+    { label: "Pricing", href: "" },
+    { label: "Contact", href: "contact" },
   ];
 
   return (
@@ -82,26 +83,25 @@ const Header = () => {
       transition={{ duration: 0.3 }}
     >
       {menuItems.map((item, index) => (
-        <motion.li
-          key={index}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ delay: index * 0.1, duration: 0.2 }}
-        >
-          <a
-            href={item.href}
-            className={`block py-2 px-3 rounded md:p-0 ${
-              item.active
-                ? "text-[#FBFDFF] bg-[#0D74CE] md:bg-transparent md:text-[#0D74CE] dark:text-[#FBFDFF]"
-                : "text-[#113264] font-bold  md:hover:dark:text-[#D5EFFF] dark:text-[#FBFDFF]  hover:text-[#0D74CE]"
-            }`}
-            aria-current={item.active ? "page" : undefined}
-          >
-            {item.label}
-          </a>
-        </motion.li>
-      ))}
+  <motion.li
+    key={index}
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    transition={{ delay: index * 0.1, duration: 0.2 }}
+  >
+    <a
+      className={`block py-2 px-3 rounded md:p-0 ${
+        item.active
+          ? "text-[#FBFDFF] bg-[#0D74CE] md:bg-transparent md:text-[#0D74CE] dark:text-[#FBFDFF]"
+          : "text-[#113264] font-bold md:hover:dark:text-[#D5EFFF] dark:text-[#FBFDFF] hover:text-[#0D74CE]"
+      }`}
+      aria-current={item.active ? "page" : undefined}
+    >
+      <Link to={item.href}>{item.label}</Link>
+    </a>
+  </motion.li>
+))}
     </motion.ul>
   )}
 </AnimatePresence>

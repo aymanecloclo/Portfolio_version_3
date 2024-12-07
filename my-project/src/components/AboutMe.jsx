@@ -1,11 +1,11 @@
 
 import developer from "../assets/images/developer.png";
 
-
+// dark:bg-[#1c3850]
 const AboutMe = (params) => {
   return(
      <>
-       <div className=" dark:bg-[#1c3850] lg:h-[80vh] my-24 3xl:px-48 lg:px-24 flex lg:flex-row flex-col lg:justify-between  items-center ">
+       <div className="  lg:h-[80vh] my-24 3xl:px-48 lg:px-24 flex lg:flex-row flex-col lg:justify-between  items-center ">
         <div className="w-full lg:w-4/12 my-12 p-5 flex justify-center ">
         <img
                 className="lg:w-10/12  3xl:w-8/10  w-3/4 object-cover  block mx-auto"
