@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
 import { FaSun, FaMoon } from 'react-icons/fa';
 import { LuPanelTopClose } from "react-icons/lu";
-import logo from '../assets/images/logo-dark.png'
+import logo_light from '../assets/images/logo-light.png'
+import logo_dark from '../assets/images/logo-dark.png'
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -13,8 +14,8 @@ import {
 import { useTheme } from "../components/theme-provider"
 const Header = () => {
   const [showMenu, setShowMenu] = useState(true);
-  const { setTheme } = useTheme();
-
+  const { setTheme ,theme} = useTheme();
+   console.log(theme);
   const menuItems = [
     { label: "Home", href: "#", },
     { label: "About", href: "#" },
@@ -27,7 +28,7 @@ const Header = () => {
     <nav className="border-gray-200 mx-0 lg:px-24">
       <div className="w-full flex flex-wrap items-center justify-between  my-0  ">
         <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse p-0 m-0">
-        <img src={logo} alt="" className='w-24 md:w-32 md:h-24 object-cover' />
+        <img src={theme=='light'?logo_light:logo_dark} alt="" className='w-24 md:w-32 md:h-24 object-cover' />
         </a>
          <div className="flex  md:hidden gap-1 px-2 ">
              <button
@@ -93,7 +94,7 @@ const Header = () => {
             className={`block py-2 px-3 rounded md:p-0 ${
               item.active
                 ? "text-[#FBFDFF] bg-[#0D74CE] md:bg-transparent md:text-[#0D74CE] dark:text-[#FBFDFF]"
-                : "text-gray-900 md:hover:dark:text-[#D5EFFF] dark:text-[#FBFDFF] hover:bg-[#0D74CE] hover:text-[#0D74CE]"
+                : "text-[#113264] font-bold  md:hover:dark:text-[#D5EFFF] dark:text-[#FBFDFF]  hover:text-[#0D74CE]"
             }`}
             aria-current={item.active ? "page" : undefined}
           >
@@ -118,7 +119,7 @@ const Header = () => {
   ></span>
   <div className="flex items-center">
     
-    <span className="ml-1 text-[#FBFDFF]">  Hire me</span>
+    <span className="ml-1 text-[#FBFDFF]  ">  Hire me</span>
   </div>
   <div className="ml-2 flex items-center gap-1 text-sm md:flex">
     

@@ -1,5 +1,6 @@
 import { useState } from "react";
-import developer from "../assets/images/developer.png";
+
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import { CiLinkedin } from "react-icons/ci";
 import { Motion, spring } from "react-motion";
 import { FaLinkedin } from "react-icons/fa";
@@ -19,7 +20,7 @@ const Presentation = () => {
       >
         {(style) => (
           <div
-            className=" flex lg:flex-row w-full lg:h-[60vh] justify-center flex-col mt-10 lg:gap-24"
+            className=" lg:px-24 flex lg:flex-row w-full lg:h-[60vh] justify-center flex-col mt-10 lg:gap-24"
             style={{
               opacity: style.opacity,
               transform: `translateY(${style.translateY}px)`,
@@ -28,10 +29,10 @@ const Presentation = () => {
             {/* Texte et badges */}
             <div className="lg:w-6/12 flex flex-col justify-center lg:items-start items-center lg:ps-10 lg:pe-0 gap-2 order-3 lg:order-2">
               <h2 className="text-xl gradient-text font-bold ">Hey there! I'm</h2>
-              <h1 className="gradient-text text-2xl lg:text-6xl my-2 text-center font-bold">
+              <h1 className="gradient-text text-2xl lg:text-6xl my-2 text-center font-bold text-nowrap ">
                 Aymane Rachid
               </h1>
-              <p className="text-md md:px-0 md:text-start text-center px-5 my-3 lg:my-2">
+              <p className=" leading-6 text-md md:px-0 md:text-start text-center px-5 my-3 lg:my-2 font-bold dark:font-normal text-[#113264] dark:text-[#FBFDFF] ">
                 FullStack Developer Lorem ipsum dolor sit amet consectetur
                 adipisicing elit. Modi neque eum nesciunt quidem consequatur
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -69,7 +70,7 @@ const Presentation = () => {
     className="absolute right-0 -mt-12 h-32 w-8 translate-x-12 rotate-12 bg-[#F4FAFF] opacity-10 transition-all duration-1000 ease-out group-hover:-translate-x-40"
   ></span>
   <div className="flex items-center">
-     <FaLinkedin className="w-4 h-4 fill-current"/>
+     <FaLinkedin className="w-4 h-4 fill-current text-white"/>
     <span className="ml-1 text-[#FBFDFF]"> Linkedin</span>
   </div>
   <div className="ml-2 flex items-center gap-1 text-sm md:flex">
@@ -85,8 +86,10 @@ const Presentation = () => {
               {/* Bouton Download */}
               <div className="mt-5">
                 <a
+                 href="file/Aymane_Rachid_cv.pdf" // chemin vers votre fichier CV
+                 download="Aymane_Rachid_cv.pdf" 
                   className="inline-flex items-center gap-2 rounded border border-[#0090FF] hover:bg-[#0D74CE] px-8 py-3 hover:text-[#FBFDFF] bg-transparent text-[#0090FF] focus:outline-none focus:ring active:text-indigo-500"
-                  href="#"
+            
                 >
                   <span className="text-sm font-medium"> Download </span>
                   <svg
@@ -109,11 +112,13 @@ const Presentation = () => {
 
             {/* Image */}
             <div className="flex items-center order-1 px-10">
-              <img
-                className="lg:w-72 w-48 block mx-auto"
-                src={developer}
-                alt="Developer"
-              />
+            <DotLottieReact
+      src="https://lottie.host/6d88acd8-97de-49ba-bbfb-ffaaaa673ae5/FD7zzK8PXy.lottie"
+      loop
+      autoplay
+    />
+       
+         
             </div>
           </div>
         )}
