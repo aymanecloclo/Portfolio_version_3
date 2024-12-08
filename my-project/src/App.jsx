@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes,Route} from 'react-router-dom';
 import Contact from './pages/Contact';
 import Header from './components/Header';
 import AboutMe from './components/AboutMe';
-
+import WhatsAppLink from './components/WhatsAppLink';
 export default function App({children}) {
 
   
@@ -23,7 +23,7 @@ export default function App({children}) {
            <Route path='about' element={ <AboutMe/>}/>
       
         </Routes>
-        
+        <WhatsAppLink/>
       </Router>
       
     </ThemeProvider >

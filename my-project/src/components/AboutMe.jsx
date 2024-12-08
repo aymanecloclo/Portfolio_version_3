@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
 import developer from "../assets/images/developer.png";
-
+import Education from "./Education";
 const AboutMe = () => {
   return (
     <>
+       <div className="flex flex-col">
       <div className="lg:h-[80vh]  3xl:px-48 lg:px-24 flex lg:flex-row flex-col lg:justify-between items-center">
         {/* Animation sur l'image */}
         <div className="w-full lg:w-4/12 my-12 p-5 flex justify-center">
@@ -46,7 +47,13 @@ const AboutMe = () => {
             par l'innovation, je recherche constamment de nouveaux défis.
           </motion.p>
         </div>
+     
       </div>
+       <Education/>
+      <div className="blob" style={{ opacity: 1 }}></div>
+      <div className="fakeblob"></div>
+    </div>
+
     </>
   );
 };
