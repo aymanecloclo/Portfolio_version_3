@@ -91,7 +91,7 @@ const Presentation = () => {
                   className="inline-flex items-center gap-2 rounded border border-[#0090FF] hover:bg-[#0D74CE] px-8 py-3 hover:text-[#FBFDFF] bg-transparent text-[#0090FF] focus:outline-none focus:ring active:text-indigo-500"
             
                 >
-                  <span className="text-sm font-medium"> Download </span>
+                  <span className="text-sm font-medium"> Download cv </span>
                   <svg
                     className="size-5 rtl:rotate-180"
                     xmlns="http://www.w3.org/2000/svg"

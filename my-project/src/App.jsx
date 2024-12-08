@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes,Route} from 'react-router-dom';
 import Contact from './pages/Contact';
 import Header from './components/Header';
 import AboutMe from './components/AboutMe';
+
 export default function App({children}) {
 
   
@@ -20,6 +21,7 @@ export default function App({children}) {
            <Route path='/' element={<Home/>}/>
            <Route path='contact' element={<Contact/>}/>
            <Route path='about' element={ <AboutMe/>}/>
+      
         </Routes>
         
       </Router>

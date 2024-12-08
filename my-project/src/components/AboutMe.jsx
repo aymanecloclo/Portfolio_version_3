@@ -4,7 +4,7 @@ import developer from "../assets/images/developer.png";
 const AboutMe = () => {
   return (
     <>
-      <div className="lg:h-[80vh] my-24 3xl:px-48 lg:px-24 flex lg:flex-row flex-col lg:justify-between items-center">
+      <div className="lg:h-[80vh]  3xl:px-48 lg:px-24 flex lg:flex-row flex-col lg:justify-between items-center">
         {/* Animation sur l'image */}
         <div className="w-full lg:w-4/12 my-12 p-5 flex justify-center">
           <motion.img
