@@ -4,7 +4,7 @@ import { ThemeProvider } from "./components/theme-provider"
 import { BrowserRouter as Router, Routes,Route} from 'react-router-dom';
 import Contact from './pages/Contact';
 import Header from './components/Header';
-import AboutMe from './components/AboutMe';
+import  Accomplishments from '../src/pages/Accomplishments'
 import WhatsAppLink from './components/WhatsAppLink';
 export default function App({children}) {
 
@@ -19,9 +19,8 @@ export default function App({children}) {
         <Routes>
        
            <Route path='/' element={<Home/>}/>
-           <Route path='contact' element={<Contact/>}/>
-           <Route path='about' element={ <AboutMe/>}/>
-      
+           <Route path='/Accomplishments' element={<Accomplishments/>}/>
+           
         </Routes>
         <WhatsAppLink/>
       </Router>

@@ -5,7 +5,7 @@ const AboutMe = () => {
   return (
     <>
        <div className="flex flex-col">
-      <div className="lg:h-[80vh]  3xl:px-48 lg:px-24 flex lg:flex-row flex-col lg:justify-between items-center">
+      <div className=" bg-[#F4FAFF] text-[#113264]  lg:h-[80vh]  3xl:px-48 lg:px-24 flex lg:flex-row flex-col lg:justify-between items-center">
         {/* Animation sur l'image */}
         <div className="w-full lg:w-4/12 my-12 p-5 flex justify-center">
           <motion.img
@@ -30,7 +30,7 @@ const AboutMe = () => {
           </motion.h1>
 
           <motion.p
-            className="text-md p-10 lg:p-0 w-full leading-8 lg:text-start font-bold dark:font-normal"
+            className="text-md p-10 lg:p-0 w-full leading-8 lg:text-start text-[#113264]   font-bold dark:font-normal"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0. }}

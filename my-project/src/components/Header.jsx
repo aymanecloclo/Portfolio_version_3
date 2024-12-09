@@ -21,7 +21,7 @@ const Header = () => {
     { label: "Home", href: "/", },
     { label: "About", href: "about" },
     { label: "Project", href: "project" },
-    { label: "Services", href: "" },
+    { label: "Accomplishments", href: "Accomplishments" },
     { label: "Contact", href: "contact" },
   ];
 
@@ -40,11 +40,11 @@ const Header = () => {
           
           <span className="sr-only">Open main menu</span>
           {!showMenu?(
-            <svg className="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+            <svg className="w-5 h-5 text-[#113264] dark:text-[#F4FAFF] " xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
             <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15" />
           </svg>
           ):(
-            < LuPanelTopClose size={28}  />
+            < LuPanelTopClose className='text-[#113264] dark:text-[#F4FAFF]' size={28}  />
           )}
           
             </button>
@@ -64,9 +64,9 @@ const Header = () => {
     <DropdownMenuItem onClick={() => setTheme("dark")}>
       Dark
     </DropdownMenuItem>
-    <DropdownMenuItem onClick={() => setTheme("system")}>
+    {/* <DropdownMenuItem onClick={() => setTheme("system")}>
       System
-    </DropdownMenuItem>
+    </DropdownMenuItem> */}
   </DropdownMenuContent>
       </DropdownMenu>
          </div>
@@ -102,6 +102,23 @@ const Header = () => {
     </a>
   </motion.li>
 ))}
+ <button
+      
+      className="lg:hidden mx-auto flex overflow-hidden items-center text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-[#0D74CE] text-[##FBFDFF] shadow hover:bg-[#0D74CE]/90 h-9 px-1 py-2 whitespace-pre md:flex group relative w-6/12 justify-center gap-2 rounded-md transition-all duration-300 ease-out hover:ring-2 hover:ring-black hover:ring-offset-2"
+>
+<span
+className="absolute right-0 -mt-12 h-32 w-8 translate-x-12 rotate-12 bg-[#F4FAFF] opacity-10 transition-all duration-1000 ease-out group-hover:-translate-x-40"
+></span>
+<div className="flex items-center">
+
+<span className="ml-1 text-[#FBFDFF]  ">  Hire me</span>
+</div>
+<div className="ml-2 flex items-center gap-1 text-sm md:flex">
+
+
+
+</div>
+     </button>
     </motion.ul>
   )}
 </AnimatePresence>
@@ -110,7 +127,7 @@ const Header = () => {
         </div>
    
         <div className="hidden  lg:flex gap-8">
-        <button
+               <button
       
                className="flex overflow-hidden items-center text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-[#0D74CE] text-[##FBFDFF] shadow hover:bg-[#0D74CE]/90 h-9 px-1 py-2 max-w-52 whitespace-pre md:flex group relative w-full justify-center gap-2 rounded-md transition-all duration-300 ease-out hover:ring-2 hover:ring-black hover:ring-offset-2"
 >
@@ -142,9 +159,9 @@ const Header = () => {
     <DropdownMenuItem onClick={() => setTheme("dark")}>
       Dark
     </DropdownMenuItem>
-    <DropdownMenuItem onClick={() => setTheme("system")}>
+    {/* <DropdownMenuItem onClick={() => setTheme("system")}>
       System
-    </DropdownMenuItem>
+    </DropdownMenuItem> */}
   </DropdownMenuContent>
       </DropdownMenu>
         </div>
