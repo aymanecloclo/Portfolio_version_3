@@ -4,6 +4,7 @@ import AboutMe from "@/components/AboutMe"
 import Project from "@/components/Project"
 import Experience from "@/components/Experience"
 import Contact from "./Contact"
+import Footer from "@/components/Footer"
 const Home= (params) => {
     return(
         <>
@@ -13,6 +14,7 @@ const Home= (params) => {
           <AboutMe/>
           <Experience/>
           <Contact/>
+          <Footer/> 
     
          </div>
         </>

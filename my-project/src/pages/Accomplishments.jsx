@@ -121,7 +121,9 @@ const Accomplishments = () => {
           </div>
         ))}
       </section>
+      
     </div>
+   
   );
   
 };

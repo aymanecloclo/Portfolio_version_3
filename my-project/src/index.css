@@ -141,3 +141,6 @@ background: linear-gradient(to left, #113264 0%, #000000 100%);
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;
 }
+body{
+  overflow-x: hidden;
+}

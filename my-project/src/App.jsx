@@ -6,6 +6,7 @@ import Contact from './pages/Contact';
 import Header from './components/Header';
 import  Accomplishments from '../src/pages/Accomplishments'
 import WhatsAppLink from './components/WhatsAppLink';
+
 export default function App({children}) {
 
   
@@ -23,6 +24,7 @@ export default function App({children}) {
            
         </Routes>
         <WhatsAppLink/>
+       
       </Router>
       
     </ThemeProvider >

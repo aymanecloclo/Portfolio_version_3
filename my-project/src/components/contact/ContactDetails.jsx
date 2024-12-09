@@ -1,4 +1,6 @@
 import { FiMapPin, FiMail, FiPhone, FiLinkedin } from 'react-icons/fi';
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import { useTheme } from '../theme-provider';
 
 const contacts = [
   {
@@ -20,8 +22,9 @@ const contacts = [
 ];
 
 const ContactDetails = () => {
+  const { setTheme, theme } = useTheme();
   return (
-    <div className="w-full lg:w-5/12">
+    <div className="w-full lg:w-5/12 flex flex-col items-center">
       <div className="text-left max-w-xl px-6 py-4">
         <h2 className="font-medium text-2xl text-primary-dark dark:text-primary-light mt-12 mb-8">
           Contact Details
@@ -49,6 +52,24 @@ const ContactDetails = () => {
             </li>
           ))}
         </ul>
+      </div>
+  
+      <div className="flex w-8/12">
+      {theme=='light'?(
+         <DotLottieReact
+         src="https://lottie.host/3e2dd719-ddd5-403a-93f4-8e4e5ea9f3ff/T5M69cHaBV.lottie"
+         loop
+         autoplay
+     
+         
+       />
+      ): <DotLottieReact
+      src="https://lottie.host/0946aee3-4794-4dcf-9d90-b9cca6d6f759/JnWLdsLnuz.lottie"
+      loop
+      autoplay
+    />}
+           
+      
       </div>
     </div>
   );

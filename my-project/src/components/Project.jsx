@@ -97,15 +97,16 @@ const Project = () => {
 
             {/* Display technologies used (ecs) */}
             <div className="relative z-10 mt-4 flex flex-wrap gap-2 text-sm text-neutral-500 dark:text-neutral-300">
-              {project.ecs.map((tech, index) => (
-                <span
-                  key={index}
-                  className="bg-neutral-200 dark:bg-neutral-700 text-neutral-800 dark:text-neutral-100 px-2 py-1 rounded-full"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
+  {project.ecs.map((tech, index) => (
+    <span
+      key={index}
+      className="bg-neutral-200 dark:bg-neutral-700 text-neutral-800 dark:text-neutral-100 px-2 py-1 rounded-lg shadow-lg hover:scale-105 transition-all duration-200"
+    >
+      {tech}
+    </span>
+  ))}
+</div>
+
 
             <p className=" group-hover:text-[#113264] relative z-10 mt-6 flex text-sm font-medium text-neutral-400 transition group-hover:text-primary-500 dark:text-neutral-300 gap-4 items-center">
               <a
@@ -114,18 +115,18 @@ const Project = () => {
                 rel="noopener noreferrer"
                 className="mr-2"
               >
-                <span className="flex">
-                  live demo <HiMiniArrowTopRightOnSquare />
+                <span className="flex items-center gap-1 ">
+                  live demo <HiMiniArrowTopRightOnSquare size={20} />
                 </span>
               </a>
 
               {/* Tech Stack icons */}
-              <span className="flex space-x-2 items-center gap-1 group-hover:text-[#113264]">
+              <span className=" cursor-pointer flex space-x-2 items-center gap-1 group-hover:text-[#113264]">
                 <a
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group "
+                  className="group flex gap-2 items-center "
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -142,8 +143,9 @@ const Project = () => {
                       d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.88 8.16 6.84 9.49.5.09.68-.22.68-.48v-1.74c-2.74.6-3.3-1.32-3.3-1.32-.44-1.12-1.08-1.42-1.08-1.42-.88-.6.07-.59.07-.59.97.07 1.57 1.01 1.57 1.01.87 1.5 2.29 1.07 2.87.82.09-.63.34-1.07.62-1.32-2.33-.26-4.77-1.16-4.77-5.17 0-1.14.41-2.08 1.09-2.81-.11-.26-.47-1.31.1-2.72 0 0 .87-.28 2.85 1.06 1.35-.38 2.8-.57 4.22-.58s2.87.2 4.22.58c1.98-1.34 2.85-1.06 2.85-1.06.57 1.41.21 2.46.1 2.72.68.73 1.09 1.67 1.09 2.81 0 4.02-2.44 4.91-4.77 5.17.28.26.54.77.54 1.58v2.34c0 .26.18.57.68.48C21.12 20.16 24 16.42 24 12c0-5.52-4.48-10-10-10z"
                     />
                   </svg>
+                  view on GitHub
                 </a>
-                view on GitHub
+               
               </span>
             </p>
           </li>
