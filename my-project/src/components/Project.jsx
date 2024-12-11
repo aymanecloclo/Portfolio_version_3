@@ -63,7 +63,7 @@ const Project = () => {
   };
 
   return (
-    <div className="mt-10 lg:mb-24 lg:mt-24 sm:mt-20 px-4 sm:px-8 md:px-16 lg:px-48">
+    <div id="project" className="mt-10 lg:mb-24 lg:mt-24 sm:mt-20 px-4 sm:px-8 md:px-16 lg:px-48">
       <ul
         className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3 justify-items-center"
         role="list"

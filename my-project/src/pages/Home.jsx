@@ -8,7 +8,10 @@ import Footer from "@/components/Footer"
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; 
 import Hire from "@/components/Hire"
+
 const Home= (params) => {
+  
+    
     return(
         <>
         <ToastContainer

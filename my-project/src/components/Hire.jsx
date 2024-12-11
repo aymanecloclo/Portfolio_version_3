@@ -1,11 +1,15 @@
 import { useFormik } from "formik";
+import { useState,useContext } from "react";
 import * as Yup from "yup";
 import { toast } from "react-toastify";  // Importer toast pour afficher les notifications
 import FormInput2 from "./reusable/FormInput2";
 import emailjs from '@emailjs/browser';
-
-
+import { FaRegWindowClose } from "react-icons/fa";
+import { useShowContext } from "@/components/ShowProvider"
 const Hire = () => {
+   const hire=useShowContext();
+
+ 
   // Validation Schema
   const validationSchema = Yup.object({
     name: Yup.string()
@@ -71,14 +75,18 @@ const Hire = () => {
   });
 
   return (
-    <div className=" absolute w-full h-screen flex items-center justify-center z-50 top-10">
+    <div className={`${hire.hire?'absolute':'hidden'}  w-full h-screen flex items-center justify-center z-50 top-10`}>
       <form
         onSubmit={formik.handleSubmit}
-        className="w-11/12 sm:w-8/12 lg:w-4/12 p-6 sm:p-10 bg-white dark:bg-gray-800 rounded-xl shadow-xl text-left"
+        className="w-11/12 sm:w-8/12 lg:w-4/12 p-6 sm:p-10 bg-white dark:bg-gray-800 rounded-xl shadow-xl text-left relative"
       >
+        <FaRegWindowClose onClick={() => hire.setShowHire(prev => !prev)} size={25} className="absolute top-5 right-5 cursor-pointer"/>
+
+        
         <p className="font-medium text-gray-800 dark:text-gray-100 text-2xl mb-8 text-center">
           Hire Me
         </p>
+
 
         {/* Full Name Input */}
         <FormInput2

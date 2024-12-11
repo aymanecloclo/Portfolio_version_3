@@ -15,6 +15,7 @@ import geo from '../certification/GEO.png'
 import alc from '../certification/alc.png'
 import tcf from '../certification/tcf.png'
 import ia from '../certification/IA.png'
+import Hire from "@/components/Hire";
 const Accomplishments = () => {
  const accomplishments = [
    {
@@ -139,8 +140,9 @@ const Accomplishments = () => {
   
 
   return (
-    <div className="py-6 sm:py-8 lg:py-12 bg-[#F4FAFF] dark:bg-transparent">
 
+    <div className="py-6 sm:py-8 lg:py-12 bg-[#F4FAFF] dark:bg-transparent">
+         <Hire/>
       <section className=" mt-24 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 px-4 sm:px-6 lg:px-8">
         {accomplishments.map((item, index) => (
           <div

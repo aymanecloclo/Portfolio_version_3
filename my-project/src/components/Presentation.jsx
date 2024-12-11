@@ -20,7 +20,7 @@ const Presentation = () => {
       >
         {(style) => (
           <div
-            className=" lg:px-24 flex lg:flex-row w-full lg:h-[60vh] justify-center flex-col mt-10 lg:gap-24 lg:mt-48"
+            className=" lg:px-24 flex lg:flex-row w-full lg:h-[60vh] justify-center flex-col  lg:gap-24 lg:mt-48 mt-24"
             style={{
               opacity: style.opacity,
               transform: `translateY(${style.translateY}px)`,

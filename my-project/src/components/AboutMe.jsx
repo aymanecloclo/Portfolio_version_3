@@ -4,7 +4,7 @@ import Education from "./Education";
 const AboutMe = () => {
   return (
     <>
-       <div className="flex flex-col">
+       <div id="about" className="flex flex-col">
       <div className=" bg-[#F4FAFF] text-[#113264]  lg:h-[80vh]  3xl:px-48 lg:px-24 flex lg:flex-row flex-col lg:justify-between items-center">
         {/* Animation sur l'image */}
         <div className="w-full lg:w-4/12 my-12 p-5 flex justify-center">
