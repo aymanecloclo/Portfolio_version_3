@@ -4,7 +4,7 @@ import ContactForm from '../components/contact/ContactForm';
 
 const Contact = () => {
   return (
-    <motion.div
+    <motion.div id='contact'
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{
