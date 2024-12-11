@@ -75,43 +75,46 @@ const Header = () => {
                 transition={{ duration: 0.3 }}
               >
                       {menuItems.map((item, index) => (
-      <motion.li
-                    key={index}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ delay: index * 0.1, duration: 0.2 }}
-                  >
-                    {item.isExternal ? (
-                      <a
-                        href={item.href}
-                        className={`block py-2 px-3 rounded md:p-0 ${item.active
-                          ? "text-[#FBFDFF] bg-[#0D74CE] md:bg-transparent md:text-[#0D74CE] dark:text-[#FBFDFF]"
-                          : "text-[#113264] font-bold md:hover:dark:text-[#D5EFFF] dark:text-[#FBFDFF] hover:text-[#0D74CE]"}`}
-                        aria-current={item.active ? "page" : undefined}
-                        rel="noopener noreferrer"
-                      >
-                        {item.label}
-                      </a>
-                    ) : (
-                      <Link to={item.href} onClick={(e) => {
-                        if (!item.href.startsWith("#")) return;
-                        e.preventDefault();
-                        const element = document.getElementById(item.href.slice(1));
-                        if (element) {
-                          element.scrollIntoView({ behavior: 'smooth' });
-                        }
-                      }}>
-                        <a
-                          className={`block py-2 px-3 rounded md:p-0 ${item.active
-                            ? "text-[#FBFDFF] bg-[#0D74CE] md:bg-transparent md:text-[#0D74CE] dark:text-[#FBFDFF]"
-                            : "text-[#113264] font-bold md:hover:dark:text-[#D5EFFF] dark:text-[#FBFDFF] hover:text-[#0D74CE]"}`}
-                        >
-                          {item.label}
-                        </a>
-                      </Link>
-                    )}
-                  </motion.li>
+     <motion.li
+  key={index}
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  exit={{ opacity: 0 }}
+  transition={{ delay: index * 0.1, duration: 0.2 }}
+>
+  {item.isExternal ? (
+    <a
+      href={item.href}
+      className={`block py-2 px-3 rounded md:p-0 ${item.active
+        ? "text-[#FBFDFF] bg-[#0D74CE] md:bg-transparent md:text-[#0D74CE] dark:text-[#FBFDFF]"
+        : "text-[#113264] font-bold md:hover:dark:text-[#D5EFFF] dark:text-[#FBFDFF] hover:text-[#0D74CE]"}`}
+      aria-current={item.active ? "page" : undefined}
+      rel="noopener noreferrer"
+    >
+      {item.label}
+    </a>
+  ) : (
+    <Link to={item.href} onClick={(e) => {
+      // Vérifie si le lien contient un hash (pour le défilement interne)
+      if (item.href.startsWith("#")) {
+        e.preventDefault();
+        const element = document.getElementById(item.href.slice(1)); // Récupère l'ID de l'élément cible
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }}>
+      <a
+        className={`block py-2 px-3 rounded md:p-0 ${item.active
+          ? "text-[#FBFDFF] bg-[#0D74CE] md:bg-transparent md:text-[#0D74CE] dark:text-[#FBFDFF]"
+          : "text-[#113264] font-bold md:hover:dark:text-[#D5EFFF] dark:text-[#FBFDFF] hover:text-[#0D74CE]"}`}
+      >
+        {item.label}
+      </a>
+    </Link>
+  )}
+</motion.li>
+
                 ))}
                 <button
                   className="lg:hidden mx-auto flex overflow-hidden items-center text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-[#0D74CE] text-[##FBFDFF] shadow hover:bg-[#0D74CE]/90 h-9 px-1 py-2 whitespace-pre md:flex group relative w-6/12 justify-center gap-2 rounded-md transition-all duration-300 ease-out hover:ring-2 hover:ring-black hover:ring-offset-2"
