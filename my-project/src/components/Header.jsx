@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
 import { FaSun, FaMoon } from 'react-icons/fa';
 import { LuPanelTopClose } from "react-icons/lu";
@@ -6,6 +6,13 @@ import logo_light from '../assets/images/logo-light.png';
 import logo_dark from '../assets/images/logo-dark.png';
 import { Button } from "@/components/ui/button";
 import { Link } from 'react-router-dom';
+import { useShowContext } from './ShowProvider';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { useTheme } from "../components/theme-provider";
 
 const Header = () => {
@@ -18,6 +25,8 @@ const Header = () => {
     { label: "Accomplishments", href: "/accomplishments", isExternal: true },
     { label: "Contact", href: "#contact", isExternal: false },
   ];
+
+  const hire = useShowContext();
 
   return (
     <nav className="lg:flex items-center border-gray-200 mx-0 lg:px-24 fixed top-0 left-0 w-full h-24 z-40 bg-[#F4FAFF] shadow-lg dark:bg-[#0c121b]">
@@ -40,6 +49,19 @@ const Header = () => {
               <LuPanelTopClose className="text-[#113264] dark:text-[#F4FAFF]" size={28} />
             )}
           </button>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="dark" size="icon">
+                <FaSun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                <FaMoon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                <span className="sr-only">Toggle theme</span>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem onClick={() => setTheme("light")}>Light</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setTheme("dark")}>Dark</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
 
         <div className="w-full md:flex items-center md:w-auto md:gap-5">
@@ -52,8 +74,8 @@ const Header = () => {
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.3 }}
               >
-                {menuItems.map((item, index) => (
-                  <motion.li
+                      {menuItems.map((item, index) => (
+      <motion.li
                     key={index}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -91,6 +113,16 @@ const Header = () => {
                     )}
                   </motion.li>
                 ))}
+                <button
+                  className="lg:hidden mx-auto flex overflow-hidden items-center text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-[#0D74CE] text-[##FBFDFF] shadow hover:bg-[#0D74CE]/90 h-9 px-1 py-2 whitespace-pre md:flex group relative w-6/12 justify-center gap-2 rounded-md transition-all duration-300 ease-out hover:ring-2 hover:ring-black hover:ring-offset-2"
+                >
+                  <span
+                    className="absolute right-0 -mt-12 h-32 w-8 translate-x-12 rotate-12 bg-[#F4FAFF] opacity-10 transition-all duration-1000 ease-out group-hover:-translate-x-40"
+                  ></span>
+                  <div className="flex items-center">
+                    <a href='#hire' onClick={() => hire.setShowHire(prev => !prev)} className="ml-1 text-[#FBFDFF] px-2">Hire me</a>
+                  </div>
+                </button>
               </motion.ul>
             )}
           </AnimatePresence>
@@ -104,9 +136,22 @@ const Header = () => {
               className="absolute right-0 -mt-12 h-32 w-8 translate-x-12 rotate-12 bg-[#F4FAFF] opacity-10 transition-all duration-1000 ease-out group-hover:-translate-x-40"
             ></span>
             <div className="flex items-center">
-              <span className="ml-1 text-[#FBFDFF] px-2">Hire me</span>
+                  <a href='#hire' onClick={() => hire.setShowHire(prev => !prev)} className="ml-1 text-[#FBFDFF] px-2">Hire me</a>
             </div>
           </button>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="dark" size="icon">
+                <FaSun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                <FaMoon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                <span className="sr-only">Toggle theme</span>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem onClick={() => setTheme("light")}>Light</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setTheme("dark")}>Dark</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </div>
     </nav>

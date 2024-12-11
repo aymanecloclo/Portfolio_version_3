@@ -75,7 +75,7 @@ const Hire = () => {
   });
 
   return (
-    <div className={`${hire.hire?'absolute':'hidden'}  w-full h-screen flex items-center justify-center z-50 top-10`}>
+    <div id="hire" className={`${hire.hire?'absolute':'hidden'}  w-full h-screen flex items-center justify-center z-50 top-10`}>
       <form
         onSubmit={formik.handleSubmit}
         className="w-11/12 sm:w-8/12 lg:w-4/12 p-6 sm:p-10 bg-white dark:bg-gray-800 rounded-xl shadow-xl text-left relative"
