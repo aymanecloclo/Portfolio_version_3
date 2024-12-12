@@ -44,7 +44,7 @@ const AboutMe = () => {
         </div>
      
       </div>
-       <Education/>
+   
       <div className="blob" style={{ opacity: 1 }}></div>
       <div className="fakeblob"></div>
     </div>

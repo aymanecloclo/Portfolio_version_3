@@ -8,7 +8,8 @@ import Footer from "@/components/Footer"
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; 
 import Hire from "@/components/Hire"
-
+import Skills from "@/components/Skills"
+import Education from "@/components/Education"
 const Home= (params) => {
   
     
@@ -30,6 +31,8 @@ const Home= (params) => {
           <Presentation/>
           <Project/>
           <AboutMe/>
+           <Skills/>
+          <Education/>
           <Experience/>
           <Contact/>
           <Footer/> 

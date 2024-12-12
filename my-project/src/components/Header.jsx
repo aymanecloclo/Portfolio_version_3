@@ -2,11 +2,18 @@ import { useState, useContext } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
 import { FaSun, FaMoon } from 'react-icons/fa';
 import { LuPanelTopClose } from "react-icons/lu";
+import { MdOutlineContacts } from "react-icons/md";
+import { HiOutlineHome } from "react-icons/hi";
 import logo_light from '../assets/images/logo-light.png';
 import logo_dark from '../assets/images/logo-dark.png';
 import { Button } from "@/components/ui/button";
 import { Link } from 'react-router-dom';
 import { useShowContext } from './ShowProvider';
+import { PiCertificate } from "react-icons/pi";
+import { GoProjectRoadmap } from "react-icons/go";
+import { TiMessageTyping } from "react-icons/ti";
+import { LiaHireAHelper } from "react-icons/lia";
+import { FaHireAHelper } from "react-icons/fa6";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -19,11 +26,11 @@ const Header = () => {
   const [showMenu, setShowMenu] = useState(true);
   const { setTheme, theme } = useTheme();
   const menuItems = [
-    { label: "Home", href: "/", isExternal: false },
-    { label: "About", href: "#about", isExternal: false },
-    { label: "Project", href: "#project", isExternal: false },
-    { label: "Accomplishments", href: "/accomplishments", isExternal: true },
-    { label: "Contact", href: "#contact", isExternal: false },
+    { label: "Home", href: "/", isExternal: false,icon:<HiOutlineHome size={18}/>},
+    { label: "About", href: "#about", isExternal: false,icon:<TiMessageTyping size={18} /> },
+    { label: "Project", href: "#project", isExternal: false,icon:<GoProjectRoadmap size={18} /> },
+    { label: "Accomplishments", href: "/accomplishments", isExternal: true,icon:<PiCertificate size={18} />  },
+    { label: "Contact", href: "#contact", isExternal: false,icon:<MdOutlineContacts  size={18} /> },
   ];
 
   const hire = useShowContext();
@@ -68,7 +75,7 @@ const Header = () => {
           <AnimatePresence>
             {showMenu && (
               <motion.ul
-                className="bg-[#F4FAFF] lg:bg-transparent text-center font-medium flex flex-col p-4 md:p-0 border border-gray-100 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 dark:border-gray-700 dark:bg-[#0c121b] z-40"
+                className="bg-[#F4FAFF] lg:bg-transparent  font-medium flex flex-col p-4 md:p-0 border border-gray-100 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 dark:border-gray-700 dark:bg-[#0c121b] z-40 text-center"
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
@@ -87,10 +94,11 @@ const Header = () => {
       href={item.href}
       className={`block py-2 px-3 rounded md:p-0 ${item.active
         ? "text-[#FBFDFF] bg-[#0D74CE] md:bg-transparent md:text-[#0D74CE] dark:text-[#FBFDFF]"
-        : "text-[#113264] font-bold md:hover:dark:text-[#D5EFFF] dark:text-[#FBFDFF] hover:text-[#0D74CE]"}`}
+        : "text-[#113264] font-bold md:hover:dark:text-[#D5EFFF] dark:text-[#FBFDFF] hover:text-[#0D74CE] flex  items-center gap-1"}`}
       aria-current={item.active ? "page" : undefined}
       rel="noopener noreferrer"
     >
+      {item.icon}
       {item.label}
     </a>
   ) : (
@@ -107,8 +115,9 @@ const Header = () => {
       <a
         className={`block py-2 px-3 rounded md:p-0 ${item.active
           ? "text-[#FBFDFF] bg-[#0D74CE] md:bg-transparent md:text-[#0D74CE] dark:text-[#FBFDFF]"
-          : "text-[#113264] font-bold md:hover:dark:text-[#D5EFFF] dark:text-[#FBFDFF] hover:text-[#0D74CE]"}`}
+          : "text-[#113264] font-bold md:hover:dark:text-[#D5EFFF] dark:text-[#FBFDFF] hover:text-[#0D74CE] flex  items-center gap-1"}`}
       >
+         {item.icon}
         {item.label}
       </a>
     </Link>
@@ -117,13 +126,13 @@ const Header = () => {
 
                 ))}
                 <button
-                  className="lg:hidden mx-auto flex overflow-hidden items-center text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-[#0D74CE] text-[##FBFDFF] shadow hover:bg-[#0D74CE]/90 h-9 px-1 py-2 whitespace-pre md:flex group relative w-6/12 justify-center gap-2 rounded-md transition-all duration-300 ease-out hover:ring-2 hover:ring-black hover:ring-offset-2"
+                  className="lg:hidden mx-auto flex overflow-hidden items-center text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-[#0D74CE] text-[##FBFDFF] shadow hover:bg-[#0D74CE]/90 h-9 px-1 py-2 whitespace-pre md:flex group relative w-4/12 justify-center gap-2 rounded-md transition-all duration-300 ease-out hover:ring-2 hover:ring-black hover:ring-offset-2"
                 >
                   <span
                     className="absolute right-0 -mt-12 h-32 w-8 translate-x-12 rotate-12 bg-[#F4FAFF] opacity-10 transition-all duration-1000 ease-out group-hover:-translate-x-40"
                   ></span>
                   <div className="flex items-center">
-                    <a href='#hire' onClick={() => hire.setShowHire(prev => !prev)} className="ml-1 text-[#FBFDFF] px-2">Hire me</a>
+                    <a href='#hire' onClick={() => hire.setShowHire(prev => !prev)} className="ml-1 text-[#FBFDFF]  flex items-center gap-2 w-18 "> <FaHireAHelper size={18}/>Hire me</a>
                   </div>
                 </button>
               </motion.ul>
@@ -133,13 +142,13 @@ const Header = () => {
 
         <div className="hidden lg:flex gap-8">
           <button
-            className="flex overflow-hidden items-center text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-[#0D74CE] text-[##FBFDFF] shadow hover:bg-[#0D74CE]/90 h-9 px-1 py-2 max-w-52 whitespace-pre md:flex group relative w-full justify-center gap-2 rounded-md transition-all duration-300 ease-out hover:ring-2 hover:ring-black hover:ring-offset-2"
+            className="flex overflow-hidden items-center text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-[#0D74CE] text-[##FBFDFF] shadow hover:bg-[#0D74CE]/90 h-9 py-2 max-w-52 whitespace-pre md:flex group relative w-full justify-center gap-2 rounded-md transition-all duration-300 ease-out hover:ring-2 hover:ring-black hover:ring-offset-2 px-2"
           >
             <span
               className="absolute right-0 -mt-12 h-32 w-8 translate-x-12 rotate-12 bg-[#F4FAFF] opacity-10 transition-all duration-1000 ease-out group-hover:-translate-x-40"
             ></span>
             <div className="flex items-center">
-                  <a href='#hire' onClick={() => hire.setShowHire(prev => !prev)} className="ml-1 text-[#FBFDFF] px-2">Hire me</a>
+                  <a href='#hire' onClick={() => hire.setShowHire(prev => !prev)} className="ml-1 text-[#FBFDFF]  flex  items-center gap-2 "> <LiaHireAHelper size={20}/>Hire me</a>
             </div>
           </button>
           <DropdownMenu>

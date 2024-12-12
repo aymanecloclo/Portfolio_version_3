@@ -68,7 +68,10 @@ module.exports = {
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
   			}
-  		}
+  		}, animation: {
+        wiggle: 'wiggle 1s ease-in-out infinite',
+        bounce: 'bounce 1s ease-in-out infinite',
+      },
   	}
   },
   plugins: [require("tailwindcss-animate")],
