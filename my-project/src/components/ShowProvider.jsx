@@ -6,9 +6,10 @@ const ShowContext = createContext();
 // Define the provider component
 const ShowProvider = ({ children }) => {
   const [hire, setShowHire] = useState(false);
+  const [language, setLanguage] = useState('en'); 
 
   return (
-    <ShowContext.Provider value={{ hire, setShowHire }}>
+    <ShowContext.Provider value={{ hire, setShowHire ,setLanguage,language}}>
       {children}
     </ShowContext.Provider>
   );

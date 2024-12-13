@@ -1,7 +1,10 @@
 import { motion } from "framer-motion";
 import developer from "../assets/images/developer.png";
 import Education from "./Education";
+import { useShowContext } from "./ShowProvider";
 const AboutMe = () => {
+       const language= useShowContext().language;
+      
   return (
     <>
        <div id="about" className="flex flex-col">
@@ -34,12 +37,25 @@ const AboutMe = () => {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0. }}
-          >
+          >{language=='en'?(
+        <span>
           I am a passionate Full-Stack Developer specializing in building dynamic and scalable web applications. Proficient in modern technologies such as React, Laravel, PHP, Python, SQL, and Tailwind, I focus on optimizing performance and delivering seamless user experiences. I leverage Git and GitHub for version control and use Jira for agile project management. Additionally, I ensure code quality with tools like SonarQube.
 
 
             <br/>
           Currently working as a Full-Stack Developer at FSCodersHub, I design and implement custom solutions following Agile/Scrum methodologies. Driven by innovation, I continuously seek new challenges to enhance my skills and contribute to impactful projects.
+          </span>
+          ):
+        <span>
+  Je suis un développeur Full-Stack passionné, spécialisé dans la création d'applications web dynamiques et évolutives. Maîtrisant des technologies modernes telles que React, Laravel, PHP, Python, SQL et Tailwind,  
+  je me concentre sur l'optimisation des performances et la fourniture d'expériences utilisateur fluides. J'utilise Git et GitHub pour le contrôle de version et Jira pour la gestion de projets Agile. De plus, j'assure la qualité du code grâce à des outils comme SonarQube.
+
+  <br/>
+  Actuellement développeur Full-Stack chez FSCodersHub, je conçois et implémente des solutions personnalisées en suivant les méthodologies Agile/Scrum. Animé par l'innovation, je recherche constamment de nouveaux défis pour perfectionner mes compétences et contribuer à des projets d'impact.
+</span>
+
+}
+  
           </motion.p>
         </div>
      

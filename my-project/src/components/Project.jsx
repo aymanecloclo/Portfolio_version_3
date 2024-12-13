@@ -1,61 +1,10 @@
 import { useState } from "react";
-import autoMover from "../assets/images/autoMover.jpeg";
-import fs from "../assets/images/fs.png";
-import weatherApp from "../assets/images/weatherApp.png";
+
 import { HiMiniArrowTopRightOnSquare } from "react-icons/hi2";
-
+import { useShowContext } from "./ShowProvider";
+import { AllProject } from "@/Data/allProject";
 const Project = () => {
-  const allProjects = [
-    {
-  id: 1,
-  src: fs,
-  title: "FScodersHub-Community",
-  content:
-    "A collaborative platform designed to connect developers, share resources, and work on open-source projects.",
-  demo:'https://fscodershub.github.io/FScodersHub-Community/',
-  link: "https://github.com/FSCodersHub/FScodersHub-Community",
-  ecs: ["React", "Tailwind", "Vite"],
-  status:''
-},
-{
-  id: 2,
-  src: weatherApp,
-  title: "Weather App",
-  content:
-    "A dynamic and user-friendly weather application providing real-time forecasts",
-  link:'https://github.com/aymanecloclo/weatherApp_version2',
-  demo: "https://aymanecloclo.github.io/weatherApp_version2/",
-  ecs: ["React", "RESTful API", "GeoAPI", "API Search"],
-},
-{
-      id: 3,
-      src: autoMover,
-      title: "AY.TECH",
-      content:
-        "Docker is a platform for developing, shipping, and running applications in containers.",
-      link: "https://github.com/aymanecloclo/AutoFileMover",
-      ecs: ["Python", "Batch Scripting", "Automation"],
-    },
-    {
-      id: 4,
-      src: autoMover,
-      title: "AY.SHOP",
-      content:
-        "Docker is a platform for developing, shipping, and running applications in containers.",
-      link: "https://github.com/aymanecloclo/AutoFileMover",
-      ecs: ["Python", "Batch Scripting", "Automation"],
-    },
-    {
-      id: 3,
-      src: autoMover,
-      title: "AutoFileMover",
-      content:
-        "Docker is a platform for developing, shipping, and running applications in containers.",
-      link: "https://github.com/aymanecloclo/AutoFileMover",
-      ecs: ["Python", "Batch Scripting", "Automation"],
-    },
-  ];
-
+     const show= useShowContext();
   const [visibleProjects, setVisibleProjects] = useState(3);
 
   const loadMoreProjects = () => {
@@ -63,19 +12,19 @@ const Project = () => {
   };
 
   return (
-    <div id="project" className="mt-10 lg:mb-24 lg:mt-24 sm:mt-20 px-4 sm:px-8 md:px-16 lg:px-48">
+    <div id="project" className="mt-10 lg:mb-24 lg:mt-32 sm:mt-20 px-4 sm:px-8 md:px-16 lg:px-48">
       <ul
         className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3 justify-items-center"
         role="list"
       >
-        {allProjects.slice(0, visibleProjects).map((project) => (
+        {AllProject.slice(0, visibleProjects).map((project) => (
           <li
             key={project.id}
             className="group relative flex flex-col items-start"
           >
             <div className="overflow-hidden relative z-10 flex h-[150px] w-[150px] items-center justify-center rounded-full bg-white shadow-md shadow-neutral-800/5 ring-1 ring-neutral-900/5 dark:border dark:border-neutral-700/50 dark:ring-0">
               <img
-                alt={project.title}
+                alt={show.language=='fr'?project.title.fr:project.title.en}
                 className="w-full h-full object-cover"
                 src={project.src}
                 loading="lazy"
@@ -91,11 +40,10 @@ const Project = () => {
                 rel="noopener noreferrer"
                 className="relative z-10"
               >
-                {project.title}
-              </a>
+                {project.title[show.language]}              </a>
             </h2>
             <p className="relative z-10 mt-2 text-sm text-neutral-600 dark:text-neutral-400">
-              {project.content}
+              {show.language=='fr'?project.content.fr:project.content.en}
             </p>
 
             {/* Display technologies used (ecs) */}
@@ -155,7 +103,7 @@ const Project = () => {
         ))}
       </ul>
 
-      {visibleProjects < allProjects.length && (
+      {visibleProjects < AllProject .length && (
         <div className="flex justify-center mt-10">
           <button
             onClick={loadMoreProjects}

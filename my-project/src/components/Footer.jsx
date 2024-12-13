@@ -54,7 +54,7 @@ const Footer = () => {
               <FaTwitter />
             </a>
             <a
-              href="#"
+              href="https://github.com/aymanecloclo?tab=repositories"
               className="text-xl text-[#113264] hover:text-[#0D74CE] dark:text-[#FBFDFF] dark:hover:text-[#0D74CE] transition-colors"
             >
               <FaGithub />

@@ -1,14 +1,16 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
 
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import { CiLinkedin } from "react-icons/ci";
 import { Motion, spring } from "react-motion";
 import { FaLinkedin } from "react-icons/fa";
-
+import { useShowContext } from "./ShowProvider";
+// import { constants } from "node:crypto";
 
 const Presentation = () => {
   const [linkBadge, setLinkBadge] = useState(["Linkedin", "Github"]);
-
+   const show= useShowContext();
+   console.log(show.language);
   return (
     <>
       <Motion
@@ -28,13 +30,20 @@ const Presentation = () => {
           >
             {/* Texte et badges */}
             <div className="lg:w-6/12 flex flex-col justify-center lg:items-start items-center lg:ps-10 lg:pe-0 gap-2 order-3 lg:order-2">
-              <h2 className="text-xl gradient-text font-bold ">Hey there! I'm</h2>
+              <h2 className="text-xl gradient-text font-bold ">{show.language=='en'?`Hey there! I'm`:`Salut ! Moi, c’est...`}</h2>
               <h1 className="gradient-text text-2xl lg:text-6xl my-2 text-center font-bold text-nowrap ">
                 Aymane Rachid
               </h1>
               <p className=" leading-6 text-md md:px-0 md:text-start text-center px-5 my-3 lg:my-2 font-bold dark:font-normal text-[#113264] dark:text-[#FBFDFF] ">
-              Full-Stack Developer specializing in creating modern, scalable web applications. I excel in technologies like React, Laravel, and Node.js, with a focus on clean code and seamless user experiences. <br />
-              As the founder of FSCodersHub, I lead and collaborate on innovative tech projects, always striving to stay ahead of emerging trends. Check out my work and let's bring your ideas to life!
+                {show.language=='en'?(
+                  <>
+                  <span>  Full-Stack Developer specializing in creating modern, scalable web applications.   I excel in technologies like React, Laravel, and Node.js, with a focus on clean code and seamless user experiences
+
+                  </span> <br/>
+             <span> As the founder of FSCodersHub, I lead and collaborate on innovative tech projects, always striving to stay ahead of emerging trends. Check out my work and let's bring your ideas to life!</span>
+             </>
+                ):`Développeur Full-Stack spécialisé dans la création d'applications web modernes et évolutives. J'excelle dans des technologies comme React, Laravel et Node.js, avec un souci particulier pour un code propre et des expériences utilisateur fluides. En tant que fondateur de FSCodersHub, je dirige et collabore sur des projets technologiques innovants, toujours à l'affût des nouvelles tendances. Découvrez mon travail et concrétisons vos idées ensemble !`}
+           
               </p>
 
               {/* Badges */}

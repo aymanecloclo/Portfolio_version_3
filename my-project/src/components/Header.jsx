@@ -25,6 +25,7 @@ import { useTheme } from "../components/theme-provider";
 const Header = () => {
   const [showMenu, setShowMenu] = useState(true);
   const { setTheme, theme } = useTheme();
+  const show= useShowContext();
   const menuItems = [
     { label: "Home", href: "/", isExternal: false,icon:<HiOutlineHome size={18}/>},
     { label: "About", href: "#about", isExternal: false,icon:<TiMessageTyping size={18} /> },
@@ -42,6 +43,19 @@ const Header = () => {
           <img src={theme === 'light' ? logo_light : logo_dark} alt="Logo" className="w-24 md:w-32 md:h-24 object-cover" />
         </a>
         <div className="flex md:hidden gap-1 px-2">
+          <label className=" lg:hidden relative inline-flex items-center cursor-pointer ">
+  <input
+    className="sr-only peer"
+    type="checkbox"
+    checked={show.language === "fr"} // Vérifie si la langue est le français
+    onChange={() => show.setLanguage(show.language === "fr" ? "en" : "fr")} // Bascule entre "fr" et "en"
+  />
+  <div className="peer rounded-full outline-none duration-100 after:duration-500 w-20 h-10 bg-[#0D74CE] peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-500
+    after:content-['FR'] after:absolute after:outline-none after:rounded-full after:h-8 after:w-8 after:bg-white after:top-1 after:left-1 after:flex after:justify-center after:items-center after:text-sky-800 after:font-bold
+    peer-checked:after:translate-x-10 peer-checked:after:content-['EN'] peer-checked:after:border-white">
+  </div>
+</label>
+
           <button
             className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden hover:text-gray-100 focus:outline-none text-[#FBFDFF]"
             onClick={() => setShowMenu(!showMenu)}
@@ -125,6 +139,9 @@ const Header = () => {
 </motion.li>
 
                 ))}
+                        {/* desktop toogle langButton */}
+
+
                 <button
                   className="lg:hidden mx-auto flex overflow-hidden items-center text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-[#0D74CE] text-[##FBFDFF] shadow hover:bg-[#0D74CE]/90 h-9 px-1 py-2 whitespace-pre md:flex group relative w-4/12 justify-center gap-2 rounded-md transition-all duration-300 ease-out hover:ring-2 hover:ring-black hover:ring-offset-2"
                 >
@@ -141,13 +158,31 @@ const Header = () => {
         </div>
 
         <div className="hidden lg:flex gap-8">
+              {/* desktop toogle langButton */}
+<label className="relative inline-flex items-center cursor-pointer ">
+  <input
+    className="sr-only peer"
+    type="checkbox"
+    checked={show.language === "fr"} // Vérifie si la langue est le français
+    onChange={() => show.setLanguage(show.language === "fr" ? "en" : "fr")} // Bascule entre "fr" et "en"
+  />
+  <div className="peer rounded-full outline-none duration-100 after:duration-500 w-20 h-10 bg-[#0D74CE] peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-500
+    after:content-['FR'] after:absolute after:outline-none after:rounded-full after:h-8 after:w-8 after:bg-white after:top-1 after:left-1 after:flex after:justify-center after:items-center after:text-sky-800 after:font-bold
+    peer-checked:after:translate-x-10 peer-checked:after:content-['EN'] peer-checked:after:border-white">
+  </div>
+</label>
+
+
           <button
             className="flex overflow-hidden items-center text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-[#0D74CE] text-[##FBFDFF] shadow hover:bg-[#0D74CE]/90 h-9 py-2 max-w-52 whitespace-pre md:flex group relative w-full justify-center gap-2 rounded-md transition-all duration-300 ease-out hover:ring-2 hover:ring-black hover:ring-offset-2 px-2"
           >
             <span
               className="absolute right-0 -mt-12 h-32 w-8 translate-x-12 rotate-12 bg-[#F4FAFF] opacity-10 transition-all duration-1000 ease-out group-hover:-translate-x-40"
             ></span>
+            
             <div className="flex items-center">
+              {/* button desktop  */}
+              
                   <a href='#hire' onClick={() => hire.setShowHire(prev => !prev)} className="ml-1 text-[#FBFDFF]  flex  items-center gap-2 "> <LiaHireAHelper size={20}/>Hire me</a>
             </div>
           </button>
