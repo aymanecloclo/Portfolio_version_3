@@ -1,6 +1,8 @@
 import autoMover from "../assets/images/autoMover.jpeg";
 import fs from "../assets/images/fs.png";
 import weatherApp from "../assets/images/weatherApp.png";
+import AYSHOP_logo from '../assets/images/AYSHOP_logo.png';
+import AYTECH from '../assets/images/AY.TECH.png';
 export const AllProject = [
   {
     id: 1,
@@ -37,8 +39,8 @@ export const AllProject = [
     id: 3,
     src: autoMover,
     title: {
-      en: "AY.TECH",
-      fr: "AY.TECH",
+      en: "AutoFileMover",
+      fr: "AutoFileMover",
     },
     content: {
       en: "A tool for automating file organization and transfer across directories.",
@@ -47,32 +49,34 @@ export const AllProject = [
     link: "https://github.com/aymanecloclo/AutoFileMover",
     ecs: ["Python", "Batch Scripting", "Automation"],
   },
-  {
-    id: 4,
-    src: autoMover,
-    title: {
-      en: "AY.SHOP",
-      fr: "AY.SHOP",
-    },
-    content: {
-      en: "A project designed to simplify and automate shopping-related tasks.",
-      fr: "Un projet conçu pour simplifier et automatiser les tâches liées aux achats."
-    },
-    link: "https://github.com/aymanecloclo/AutoFileMover",
-    ecs: ["Python", "Batch Scripting", "Automation"],
+{
+  id: 4,
+  src: AYSHOP_logo,
+  title: {
+    en: "AY.SHOP",
+    fr: "AY.SHOP"
   },
-  {
-    id: 5,
-    src: autoMover,
-    title: {
-      en: "AutoFileMover",
-      fr: "Déplaceur de Fichiers Automatique",
-    },
-    content: {
-      en: "A utility to automate file transfers and organization, improving workflow efficiency.",
-      fr: "Un utilitaire pour automatiser les transferts et l'organisation des fichiers, améliorant l'efficacité du flux de travail."
-    },
-    link: "https://github.com/aymanecloclo/AutoFileMover",
-    ecs: ["Python", "Batch Scripting", "Automation"],
+  content: {
+    en: "A modern e-commerce platform built with React and Laravel, featuring secure authentication through Auth0 and seamless database integration with MySQL and NoSQL.",
+    fr: "Une plateforme e-commerce moderne développée avec React et Laravel, offrant une authentification sécurisée via Auth0 et une intégration fluide avec MySQL et NoSQL."
   },
+  link: "https://github.com/aymanecloclo/AY.SHOP",
+  ecs: ["React", "Laravel", "Auth0", "MySQL", "NoSQL", "E-commerce"],
+}
+,
+  {
+  id: 5,
+  src: AYTECH, 
+  title: {
+    en: "AY.TECH",
+    fr: "AY.TECH",
+  },
+  content: {
+    en: "A platform offering AI services such as automation, machine learning, and data processing to enhance workflow efficiency.",
+    fr: "Une plateforme offrant des services d'IA tels que l'automatisation, l'apprentissage automatique et le traitement des données pour améliorer l'efficacité des flux de travail.",
+  },
+  link: "https://aymanecloclo.github.io/IA_tech/#",  // Vérifiez que le lien est bien fonctionnel
+  ecs: ["HTML5", "CSS3", "Bootstrap"],
+}
+
 ];

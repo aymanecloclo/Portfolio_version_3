@@ -54,13 +54,13 @@ const ContactDetails = () => {
         </ul>
       </div>
   
-      <div className="flex w-8/12">
+      <div className="flex lg:w-10/12  w-full">
       {theme=='light'?(
          <DotLottieReact
          src="https://lottie.host/3e2dd719-ddd5-403a-93f4-8e4e5ea9f3ff/T5M69cHaBV.lottie"
          loop
          autoplay
-     
+      
          
        />
       ): <DotLottieReact

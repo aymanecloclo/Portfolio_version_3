@@ -3,24 +3,26 @@ import * as Yup from "yup";
 import { toast } from "react-toastify";  // Importer toast pour afficher les notifications
 import FormInput from "../reusable/FormInput";  // Assurez-vous que ce composant est adapté à Formik
 import emailjs from '@emailjs/browser';
-
+import { useShowContext } from "../ShowProvider";
 
 const ContactForm = () => {
+  const {language}=useShowContext();
+  console.log(language);
   // Validation Schema
-  const validationSchema = Yup.object({
-    name: Yup.string()
-      .min(2, "Name must be at least 2 characters")
-      .required("Name is required"),
-    email: Yup.string()
-      .email("Invalid email address")
-      .required("Email is required"),
-    subject: Yup.string()
-      .min(3, "Subject must be at least 3 characters")
-      .required("Subject is required"),
-    message: Yup.string()
-      .min(10, "Message must be at least 10 characters")
-      .required("Message is required"),
-  });
+const validationSchema = Yup.object({
+  name: Yup.string()
+    .min(2, language === 'en' ? "Name must be at least 2 characters" : "Le nom doit contenir au moins 2 caractères")
+    .required(language === 'en' ? "Name is required" : "Le nom est requis"),
+  email: Yup.string()
+    .email(language === 'en' ? "Invalid email address" : "Adresse e-mail invalide")
+    .required(language === 'en' ? "Email is required" : "L'e-mail est requis"),
+  subject: Yup.string()
+    .min(3, language === 'en' ? "Subject must be at least 3 characters" : "Le sujet doit contenir au moins 3 caractères")
+    .required(language === 'en' ? "Subject is required" : "Le sujet est requis"),
+  message: Yup.string()
+    .min(10, language === 'en' ? "Message must be at least 10 characters" : "Le message doit contenir au moins 10 caractères")
+    .required(language === 'en' ? "Message is required" : "Le message est requis"),
+});
 
   // Formik Hook
   const formik = useFormik({

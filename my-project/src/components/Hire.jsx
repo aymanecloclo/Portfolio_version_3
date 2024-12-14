@@ -7,24 +7,24 @@ import emailjs from '@emailjs/browser';
 import { FaRegWindowClose } from "react-icons/fa";
 import { useShowContext } from "@/components/ShowProvider"
 const Hire = () => {
-   const hire=useShowContext();
-
+   const {hire,language,setShowHire}=useShowContext();
+         
  
   // Validation Schema
-  const validationSchema = Yup.object({
-    name: Yup.string()
-      .min(2, "Name must be at least 2 characters")
-      .required("Name is required"),
-    email: Yup.string()
-      .email("Invalid email address")
-      .required("Email is required"),
-    subject: Yup.string()
-      .min(3, "Subject must be at least 3 characters")
-      .required("Subject is required"),
-    message: Yup.string()
-      .min(10, "Message must be at least 10 characters")
-      .required("Message is required"),
-  });
+ const validationSchema = Yup.object({
+  name: Yup.string()
+    .min(2, language === 'en' ? "Name must be at least 2 characters" : "Le nom doit contenir au moins 2 caractères")
+    .required(language === 'en' ? "Name is required" : "Le nom est requis"),
+  email: Yup.string()
+    .email(language === 'en' ? "Invalid email address" : "Adresse e-mail invalide")
+    .required(language === 'en' ? "Email is required" : "L'e-mail est requis"),
+  subject: Yup.string()
+    .min(3, language === 'en' ? "Subject must be at least 3 characters" : "Le sujet doit contenir au moins 3 caractères")
+    .required(language === 'en' ? "Subject is required" : "Le sujet est requis"),
+  message: Yup.string()
+    .min(10, language === 'en' ? "Message must be at least 10 characters" : "Le message doit contenir au moins 10 caractères")
+    .required(language === 'en' ? "Message is required" : "Le message est requis"),
+});
 
   // Formik Hook
   const formik = useFormik({
@@ -75,12 +75,12 @@ const Hire = () => {
   });
 
   return (
-    <div id="hire" className={`${hire.hire?'absolute':'hidden'}  w-full h-screen flex items-center justify-center z-50 top-10`}>
+    <div id="hire" className={`${hire?'absolute':'hidden'}  w-full h-screen flex items-center justify-center z-50 top-10`}>
       <form
         onSubmit={formik.handleSubmit}
         className="w-11/12 sm:w-8/12 lg:w-4/12 p-6 sm:p-10 bg-white dark:bg-gray-800 rounded-xl shadow-xl text-left relative"
       >
-        <FaRegWindowClose onClick={() => hire.setShowHire(prev => !prev)} size={25} className="absolute top-5 right-5 cursor-pointer"/>
+        <FaRegWindowClose onClick={() => setShowHire(prev => !prev)} size={25} className="absolute top-5 right-5 cursor-pointer"/>
 
         
         <p className="font-medium text-gray-800 dark:text-gray-100 text-2xl mb-8 text-center">

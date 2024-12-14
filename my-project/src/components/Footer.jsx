@@ -1,6 +1,6 @@
 import { FaFacebookF, FaTwitter, FaGithub } from 'react-icons/fa';
-
-const Footer = () => {
+import { memo } from 'react';
+const Footer =memo(() => {
   return (
     <footer className="bg-[#F4FAFF] dark:bg-[#0c121b] text-[#113264] dark:text-[#FBFDFF] py-8 mt-12">
       <div className="container mx-auto px-6">
@@ -54,7 +54,7 @@ const Footer = () => {
               <FaTwitter />
             </a>
             <a
-              href="https://github.com/aymanecloclo?tab=repositories"
+              href="https://github.com/aymanecloclo"
               className="text-xl text-[#113264] hover:text-[#0D74CE] dark:text-[#FBFDFF] dark:hover:text-[#0D74CE] transition-colors"
             >
               <FaGithub />
@@ -64,6 +64,6 @@ const Footer = () => {
       </div>
     </footer>
   );
-};
+});
 
 export default Footer;
