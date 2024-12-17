@@ -12,15 +12,15 @@ export default function App({children}) {
   
   
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+    <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
       {children}
      <ShowProvider >
-      <Router>
+      <Router  basename="/Portfolio">
       <Header/>
         <Routes>
        
            <Route path='/' element={<Home/>}/>
-           <Route path='/Accomplishments' element={<Accomplishments/>}/>
+           <Route path='/accomplishments' element={<Accomplishments/>}/>
         
            
         </Routes>

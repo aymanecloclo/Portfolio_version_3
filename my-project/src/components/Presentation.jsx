@@ -93,7 +93,7 @@ const Presentation = () => {
               {/* Bouton Download */}
               <div className="mt-5">
                 <a
-                 href="file/Aymane_Rachid_cv.pdf" // chemin vers votre fichier CV
+                 href="/Portfolio/file/Aymane_Rachid_cv.pdf" // chemin vers votre fichier CV
                  download="Aymane_Rachid_cv.pdf" 
                   className="inline-flex items-center gap-2 rounded border border-[#0090FF] hover:bg-[#0D74CE] px-8 py-3 hover:text-[#FBFDFF] bg-transparent text-[#0090FF] focus:outline-none focus:ring active:text-indigo-500"
             

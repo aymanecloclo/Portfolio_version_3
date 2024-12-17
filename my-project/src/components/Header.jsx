@@ -14,6 +14,10 @@ import { GoProjectRoadmap } from "react-icons/go";
 import { TiMessageTyping } from "react-icons/ti";
 import { LiaHireAHelper } from "react-icons/lia";
 import { FaHireAHelper } from "react-icons/fa6";
+import { IoLanguage } from "react-icons/io5";
+import fr from '../assets/images/fr.png'
+import en from '../assets/images/en.jpg'
+import { IoCheckmark } from "react-icons/io5";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -30,11 +34,22 @@ const Header = () => {
     { label: "Home", href: "/", isExternal: false,icon:<HiOutlineHome size={18}/>},
     { label: "About", href: "#about", isExternal: false,icon:<TiMessageTyping size={18} /> },
     { label: "Project", href: "#project", isExternal: false,icon:<GoProjectRoadmap size={18} /> },
-    { label: "Accomplishments", href: "/accomplishments", isExternal: true,icon:<PiCertificate size={18} />  },
+    { label: "Accomplishments", href: " /Portfolio/accomplishments", isExternal: true,icon:<PiCertificate size={18} />  },
     { label: "Contact", href: "#contact", isExternal: false,icon:<MdOutlineContacts  size={18} /> },
   ];
-
+ const [selectedLanguage, setSelectedLanguage] = useState("fr");
   const {hire,setShowHire,language,setLanguage} = useShowContext();
+ const handleToggle=()=>{
+  if(theme=='dark'){
+    setTheme('light');
+  }else{
+    setTheme('dark');
+  }
+ }
+   const handleLanguageChange = (newLanguage) => {
+    setLanguage(newLanguage);
+
+  };
 
   return (
     <nav className="lg:flex items-center border-gray-200 mx-0 lg:px-24 fixed top-0 left-0 w-full h-24 z-40 bg-[#F4FAFF] shadow-lg dark:bg-[#0c121b]">
@@ -42,49 +57,53 @@ const Header = () => {
         <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse p-0 m-0">
           <img src={theme === 'light' ? logo_light : logo_dark} alt="Logo" className="w-24 md:w-32 md:h-24 object-cover" />
         </a>
-        <div className="flex md:hidden gap-1 px-2">
-  {/* desktop toggle langButton */}
-<label className="relative inline-flex items-center cursor-pointer">
-  <input
-    className="sr-only peer"
-    type="checkbox"
-    checked={show.language === "fr"} // Vérifie si la langue est le français
-    onChange={() => show.setLanguage(show.language === "fr" ? "en" : "fr")} // Bascule entre "fr" et "en"
-  />
-  <div className="peer rounded-full outline-none duration-100 after:duration-500 w-16 h-7 bg-[#0D74CE] peer-focus:outline-none 
-    after:content-['FR'] after:absolute after:outline-none after:rounded-full after:h-6 after:w-6 after:bg-gradient-to-r after:from-blue-500 after:via-white to-red-500 after:bg-red-500 after:top-1.5 after:left-1 after:flex after:justify-center after:items-center after:text-[#113264] after:font-bold
-    peer-checked:after:translate-x-8 peer-checked:after:content-['EN'] peer-checked:after:text-red-600 peer-checked:after:bg-blue-500 peer-checked:after:border-white">
-  </div>
-</label>
-
-
+        <div className="flex  items-center md:hidden  px-2 gap-1">
+  {/* mobile  toggle langButton */}
+           <Button  className='me-4' onClick={handleToggle} variant="dark" size="icon">
+                <FaSun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                <FaMoon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                <span className="sr-only">Toggle theme</span>
+              </Button>
+        <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="dark" size="icon">
+          <IoLanguage />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end">
+        <DropdownMenuItem  onClick={() => handleLanguageChange("fr")}>
+         <span className='flex items-center justify-center gap-4'>FR  <img src={fr} alt="" className='w-4  h-4 object-cover' />
+              {language === "fr" && <IoCheckmark className="dark:text-[#FBFDFF] text-[#113264]" />}
+         </span> 
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => handleLanguageChange("en")}>
+               <span className='flex items-center justify-center  gap-4'>EN <img src={en} alt="" className='w-4  h-3 object-cover' />
+                  {language === "en" && <IoCheckmark className="dark:text-[#FBFDFF] text-[#113264]"  />}
+               </span> 
+        </DropdownMenuItem>
+    
+      </DropdownMenuContent>
+    </DropdownMenu>
           <button
-            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden hover:text-gray-100 focus:outline-none text-[#FBFDFF]"
+            className=" inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden hover:text-gray-100 focus:outline-none text-[#FBFDFF]"
             onClick={() => setShowMenu(!showMenu)}
             aria-expanded={showMenu}
           >
             <span className="sr-only">Open main menu</span>
             {!showMenu ? (
-              <svg className="w-5 h-5 text-[#113264] dark:text-[#F4FAFF]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+              <svg className="w-8 h-5 text-[#113264] dark:text-[#F4FAFF]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15" />
               </svg>
             ) : (
               <LuPanelTopClose className="text-[#113264] dark:text-[#F4FAFF]" size={28} />
             )}
           </button>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="dark" size="icon">
-                <FaSun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-                <FaMoon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-                <span className="sr-only">Toggle theme</span>
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem onClick={() => setTheme("light")}>Light</DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setTheme("dark")}>Dark</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <div className="me-4">
+            
+             
+           
+       
+          </div>
         </div>
 
         <div className="w-full md:flex items-center md:w-auto md:gap-5">
@@ -167,21 +186,34 @@ const Header = () => {
 
         <div className="hidden lg:flex gap-8">
 {/* desktop toggle langButton */}
-<label className="relative inline-flex items-center cursor-pointer">
-  <input
-    className="sr-only peer"
-    type="checkbox"
-    checked={show.language === "fr"} // Vérifie si la langue est le français
-    onChange={() => show.setLanguage(show.language === "fr" ? "en" : "fr")} // Bascule entre "fr" et "en"
-  />
-  <div className="peer rounded-full outline-none duration-100 after:duration-500 w-16 h-7 bg-[#0D74CE] peer-focus:outline-none 
-    after:content-['FR'] after:absolute after:outline-none after:rounded-full after:h-6 after:w-6 after:bg-gradient-to-r after:from-blue-500 after:via-white to-red-500 after:bg-red-500 after:top-1.5 after:left-1 after:flex after:justify-center after:items-center after:text-[#113264] after:font-bold
-    peer-checked:after:translate-x-8 peer-checked:after:content-['EN'] peer-checked:after:text-white peer-checked:after:bg-blue-500 peer-checked:after:border-white">
-  </div>
-</label>
 
+          <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="dark" size="icon">
+          <IoLanguage />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end">
+        <DropdownMenuItem  onClick={() => handleLanguageChange("fr")}>
+         <span className='flex items-center justify-center gap-4'>FR  <img src={fr} alt="" className='w-4  h-4 object-cover' />
+              {language === "fr" && <IoCheckmark className="dark:text-[#FBFDFF] text-[#113264]" />}
+         </span> 
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => handleLanguageChange("en")}>
+               <span className='flex items-center justify-center  gap-4'>EN <img src={en} alt="" className='w-4  h-3 object-cover' />
+                  {language === "en" && <IoCheckmark className="dark:text-[#FBFDFF] text-[#113264]"  />}
+               </span> 
+        </DropdownMenuItem>
+    
+      </DropdownMenuContent>
+    </DropdownMenu>
 
-
+    {/* desktop toggle dark  */}
+              <Button onClick={handleToggle} variant="dark" size="icon">
+                <FaSun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                <FaMoon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                <span className="sr-only">Toggle theme</span>
+              </Button>
       <button
   className="flex overflow-hidden items-center text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 bg-[#0D74CE] text-[#FBFDFF] shadow hover:bg-[#0D74CE]/90 h-9 py-2 max-w-52 whitespace-pre md:flex group relative w-full justify-center gap-2 rounded-md transition-all duration-300 ease-out hover:ring-2 hover:ring-black hover:ring-offset-2 px-2"
   onClick={() => setShowHire((prev) => !prev)} // Gérez l'état directement ici
@@ -197,20 +229,10 @@ const Header = () => {
     </span>
   </div>
 </button>
-
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="dark" size="icon">
-                <FaSun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-                <FaMoon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-                <span className="sr-only">Toggle theme</span>
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem onClick={() => setTheme("light")}>Light</DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setTheme("dark")}>Dark</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+    
+          
+            
+      
         </div>
       </div>
     </nav>
